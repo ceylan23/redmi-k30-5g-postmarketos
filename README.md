@@ -37,4 +37,10 @@ Out of scope for phase 1: modem / calls / 5G, cameras, fingerprint, 120 Hz refre
 
 ## Status
 
-2026-10-31 — project created, research in progress. No image has been built or flashed yet.
+2026-10-31 — **boot.img built successfully** on the owner's Arch laptop (sherbook, Ryzen 7 4700U): kernel built in one pass (~16 min), device package, `install --no-fde` and `export` all passed. See `build-summary.md`.
+
+Artifacts (on sherbook, `~/k30-pmos/artifacts/`):
+- `boot.img` — 60,174,336 bytes, sha256 `b4e40f79a6e7d6c9eb90e97310a03a7aaaa1723f135e3ff587bbd76102183cb5`, Android bootimg, page size 4096, DTB confirmed `picasso-sm7250.dtb`
+- `xiaomi-picasso.img` — rootfs image, 1,363,148,800 bytes (console UI)
+
+Not yet done: nothing has been flashed or booted on the phone. Next step is a non-destructive `fastboot boot boot.img` test.
