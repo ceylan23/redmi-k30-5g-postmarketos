@@ -123,7 +123,8 @@ https://github.com/LineageOS/android_kernel_xiaomi_sm7250
 
 ### 2.4 存储（UFS）
 
-- `lito.dtsi`：`ufshc_mem: ufshc@1d84000`，compatible `"qcom,ufshc"`，aliases 里 `ufshc1` 为内嵌 UFS 槽；另有 `sdhc_1`（eMMC 命名槽位）和 microSD 扩展（PhoneDB 标注 TransFlash/microSD 扩展接口）。
+- `lito.dtsi`：`ufshc_mem: ufshc@1d84000`，compatible `"qcom,ufshc"`，aliases 里 `ufshc1` 为内嵌 UFS 槽；另有 `sdhc_1`（eMMC 命名槽位，SoC 侧控制器存在而已）。
+- **更正（2026-10-31，用户指出 + 复核）**：K30 5G 整机**没有 microSD 卡槽**（双 nano-SIM only；GSMArena 规格 Card slot = No，Wikipedia 亦标注 5G 版 Removable storage = None，microSD 仅 4G 版 K30 / POCO X2 有）。此前按 PhoneDB 的 TransFlash 标注写“microSD 扩展”是错的——DTS 里的 sdhc_1 只是 SoC 控制器节点，不代表整机有卡槽。影响：无 SD 卡全系统测试路线，后续无损全系统测试改用 netboot（rootfs 在 PC 侧经 USB 网络提供）。
 - 介质规格：UFS 2.1（PhoneDB 128GB 版简介）。deviceinfo 里要照 monet 写 `deviceinfo_rootfs_image_sector_size="4096"`（UFS 必需）。
 
 ### 2.5 电池 / 充电
