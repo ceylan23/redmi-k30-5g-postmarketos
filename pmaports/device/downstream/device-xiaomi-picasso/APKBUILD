@@ -1,0 +1,35 @@
+# Reference: <https://postmarketos.org/devicepkg>
+maintainer="ceylan23"
+pkgname=device-xiaomi-picasso
+pkgdesc="Xiaomi Redmi K30 5G"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	linux-xiaomi-picasso
+	mkbootimg
+	msm-firmware-loader
+	postmarketos-base
+	soc-qcom
+"
+makedepends="devicepkg-dev"
+source="
+	deviceinfo
+	kernel-cmdline.conf
+"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+1f2eff322dbae1ccba10143a963cbe99e7492f21c8a3f3151f2fd6c7ae744e3e970cac5a7278088e972b28185a3401021284de89f25040b17aa73adcaa15f853  deviceinfo
+0efce37855d0df820944556bb083b57eb0df900442ee63120a4bcdcbe4be63abb07ea068002c7bbba5158b0ffd64c7875966e4f2ed4df71c810f5bd1493b9c30  kernel-cmdline.conf
+"
